@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "id": 649195,
+      "title": "Lamb Burgers With Tzatziki Sauce",
+      "image": "https://img.spoonacular.com/recipes/649195-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 801377,
+      "title": "Chicken Parmesan Patty- Eat As A Burger OR On Pasta",
+      "image": "https://img.spoonacular.com/recipes/801377-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 637631,
+      "title": "Cheesy Bacon Burger with Spicy Chipotle Aiolo Sauce",
+      "image": "https://img.spoonacular.com/recipes/637631-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 1096267,
+      "title": "Turkey Burgers with Slaw",
+      "image": "https://img.spoonacular.com/recipes/1096267-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 642539,
+      "title": "Falafel Burger",
+      "image": "https://img.spoonacular.com/recipes/642539-312x231.png",
+      "imageType": "png"
+    },
+    {
+      "id": 622825,
+      "title": "Tortilla Burger Loco Vaca",
+      "image": "https://img.spoonacular.com/recipes/622825-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 632502,
+      "title": "Apple Cheddar Turkey Burgers With Chipotle Yogurt Sauce",
+      "image": "https://img.spoonacular.com/recipes/632502-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 663357,
+      "title": "The Unagi Burger",
+      "image": "https://img.spoonacular.com/recipes/663357-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 664011,
+      "title": "Turkey Burgers",
+      "image": "https://img.spoonacular.com/recipes/664011-312x231.jpg",
+      "imageType": "jpg"
+    },
+    {
+      "id": 659058,
+      "title": "Salmon Burgers With Roasted Red Pepper Aioli",
+      "image": "https://img.spoonacular.com/recipes/659058-312x231.jpg",
+      "imageType": "jpg"
+    }
+  ],
+  "offset": 0,
+  "number": 10,
+  "totalResults": 50
+}

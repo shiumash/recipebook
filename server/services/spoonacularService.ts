@@ -6,23 +6,31 @@ const prisma = new PrismaClient();
 const fetchRecipeData = async (q: string) => {
   const res = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?query=${q}&apiKey=${process.env.SPOONACULAR_API_KEY}`);
   // Extract relevant information from the response
-  const recipes = res.data.results.map((recipe: any) => ({
-    id: recipe.id,
-    title: recipe.title,
-    image: recipe.image,
-  }));
-  return recipes;
+  return res.data.results;
 };
 
 const fetchRecipeInfo = async (id: string) => {
   const res = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.SPOONACULAR_API_KEY}`);
-  return res.data;
+  const data = res.data;
+
+  const recipeInfo = {
+    id: data.id,
+    title: data.title,
+    readyInMinutes: data.readyInMinutes,
+    servings: data.servings,
+    image: data.image,
+    summary: data.summary,
+    instructions: data.instructions,
+  }
+
+  return recipeInfo
 };
 
 const addFavRecipe = async (id: string) => {
+  const recipeId = Number(id)
   return await prisma.favoriteRecipes.create({
     data: {
-      recipeId: id,
+      recipeId: recipeId,
     },
   });
 };
@@ -32,17 +40,19 @@ const getFavRecipes = async () => {
 };
 
 const updateFavRecipe = async (id: string) => {
+  const recipeId = Number(id)
   return await prisma.favoriteRecipes.update({
-    where: { recipeId: id },
+    where: { recipeId: recipeId },
     data: {
-      recipeId: id,
+      recipeId: recipeId,
     },
   });
 };
 
 const removeFavRecipe = async (id: string) => {
+  const recipeId = Number(id)
   return await prisma.favoriteRecipes.delete({
-    where: { recipeId: id },
+    where: { recipeId: recipeId },
   });
 };
 
@@ -53,4 +63,4 @@ export {
   getFavRecipes,
   updateFavRecipe,
   removeFavRecipe,
-};
+}

@@ -28,7 +28,7 @@ const getRecipe = async (req: Request, res: Response, next: NextFunction) => {
   }
   try {
     const data = await fetchRecipeData(query);
-    res.json({ results: data });
+    res.json(data);
   } catch (err) {
     next(err);
   }
