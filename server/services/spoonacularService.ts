@@ -19,7 +19,6 @@ const fetchRecipeInfo = async (id: string) => {
     readyInMinutes: data.readyInMinutes,
     servings: data.servings,
     image: data.image,
-    summary: data.summary,
     instructions: data.instructions,
   }
 

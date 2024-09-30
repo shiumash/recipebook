@@ -14,11 +14,11 @@ router.get('/recipeQuery', getRecipe);
 
 router.get('/:recipeID/info', getRecipeInfo);
 
-router.route('/favorites')
-  .get(getFavorites)
-  .post(addFavorite);
+router.get('/favorites', getFavorites)
 
-router.delete('/favorites/:recipeID', removeFavorite);
-router.put('/favorites/:recipeID', updateFavorite);
+router.route('/favorites/:recipeID')
+  .post(addFavorite)
+  .delete(removeFavorite)
+  .put(updateFavorite);
 
 export default router;

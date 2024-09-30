@@ -57,7 +57,7 @@ const getFavorites = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 const addFavorite = async (req: Request, res: Response, next: NextFunction) => {
-  const recipeID = req.body.recipeID;
+  const recipeID = req.params.recipeID;
   if (!recipeID) {
     return res.status(400).json({ error: 'Missing recipeID parameter' });
   }
