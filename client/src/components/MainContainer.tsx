@@ -8,11 +8,10 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-  Button,
 } from "@/components/ui";
 
 import { useDebounce } from "@uidotdev/usehooks";
-
+import { FavoriteCardList } from "./FavoriteCardList";
 import { SearchInput } from "./SearchInput";
 import { RecipeCardList } from "./RecipeCardList";
 
@@ -21,7 +20,7 @@ export const MainContainer = () => {
   const [searchTerm, setSearchTerm] = useState("burgers");
   const [recipes, setRecipes] = useState([]);
   const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = React.useState([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
@@ -37,6 +36,16 @@ export const MainContainer = () => {
     }
   };
 
+  const fetchFavorites = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/api/recipes/favorites`);
+      console.log(response.data);
+      setFavorites(response.data || []);
+    } catch (err) {
+      console.log('Failed to fetch favorites', err);
+    }
+  }
+
   useEffect(() => {
     handleSearch();
   }, [debouncedSearchTerm]);
@@ -46,16 +55,14 @@ export const MainContainer = () => {
         <Tabs defaultValue="recipe-search" className="w-full">
           <TabsList className="flex justify-start bg-inherit">
             <TabsTrigger className="text-lg" value="recipe-search">Recipe Search</TabsTrigger>
-            <TabsTrigger className="text-lg" value="favorites">Favorites</TabsTrigger>
+            <TabsTrigger className="text-lg" value="favorites" onClick={fetchFavorites}>Favorites</TabsTrigger>
           </TabsList>
           <TabsContent value="recipe-search">
             <SearchInput searchTerm={searchTerm} handleChange={handleChange} />
             <RecipeCardList recipes={recipes}/>
           </TabsContent>
-          <TabsContent value="favorites">
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              hi
-            </div>
+          <TabsContent value="favorites" >
+            <FavoriteCardList favorites={favorites}/>
           </TabsContent>
         </Tabs>
       </div>
